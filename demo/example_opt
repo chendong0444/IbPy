@@ -29,7 +29,7 @@ if __name__ == '__main__':
 
         con.reqAccountUpdates(1, '')
         qqqq = Contract()
-        qqqq.m_symbol = 'QQQQ'
+        qqqq.m_symbol = 'AMZN'
         qqqq.m_secType = 'STK'
         qqqq.m_exchange = 'SMART'
         con.reqMktData(1, qqqq, '', False)

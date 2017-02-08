@@ -30,27 +30,27 @@ def makeStkContract(contractTuple):
     return newContract
 
 if __name__ == '__main__':
-    con = ibConnection()
+    con = ibConnection(clientId=0)
     con.registerAll(watcher)
-    showBidAskOnly = True  # set False to see the raw messages
+    showBidAskOnly = False  # set False to see the raw messages
     if showBidAskOnly:
         con.unregister(watcher, message.tickSize, message.tickPrice,
                        message.tickString, message.tickOptionComputation)
         con.register(my_BidAsk, message.tickPrice)
     con.connect()
-    sleep(1)
-    tickId = 1
+    sleep(10)
+    tickId = 103
 
     # Note: Option quotes will give an error if they aren't shown in TWS
-    contractTuple = ('QQQQ', 'STK', 'SMART', 'USD', '', 0.0, '')
+    contractTuple = ('GOOG', 'STK', 'SMART', 'USD', '', 0.0, '')
     #contractTuple = ('QQQQ', 'OPT', 'SMART', 'USD', '20070921', 47.0, 'CALL')
     #contractTuple = ('ES', 'FUT', 'GLOBEX', 'USD', '200709', 0.0, '')
     #contractTuple = ('ES', 'FOP', 'GLOBEX', 'USD', '20070920', 1460.0, 'CALL')
-    #contractTuple = ('EUR', 'CASH', 'IDEALPRO', 'USD', '', 0.0, '')
+    # contractTuple = ('EUR', 'CASH', 'IDEALPRO', 'USD', '', 0.0, '')
     stkContract = makeStkContract(contractTuple)
     print ('* * * * REQUESTING MARKET DATA * * * *')
     con.reqMktData(tickId, stkContract, '', False)
-    sleep(15)
+    sleep(1502)
     print ('* * * * CANCELING MARKET DATA * * * *')
     con.cancelMktData(tickId)
     sleep(1)

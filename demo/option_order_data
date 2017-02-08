@@ -55,13 +55,13 @@ if __name__ == '__main__':
     con.registerAll(watcher)
     con.connect()
 
-    tickID = 36
-    orderID = -100 #50002 + 10
+    tickID = 365
+    orderID = 111 #-100 #50002 + 10
 
-    stkContract = makeStkContract('EUR')
+    stkContract = makeStkContract('CTRP')
     con.reqMktData(1, stkContract, '', '')
 
-    optContract = makeOptContract('QQQQ', '20080919', 'C', 34.0)
+    optContract = makeOptContract('CTRP', '20150919', 'C', 34.0)
     con.reqMktData(tickID, optContract, '', '')
     #sleep(5)
     #con.cancelMktData(tickID)
